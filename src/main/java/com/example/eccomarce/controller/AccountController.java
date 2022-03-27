@@ -43,6 +43,6 @@ public class AccountController {
         user.setRoles(roles);
         userRepository.save(user);
         request.login(user.getEmail(), password);// NOTE: If u want a user after register the system to allow to be login direct
-        return "redirect:/home";
+        return "redirect:/";
     }
 }
