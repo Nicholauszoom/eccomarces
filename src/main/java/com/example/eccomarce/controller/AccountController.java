@@ -34,7 +34,7 @@ public class AccountController {
         GlobalData.cart.clear();
         return "login.html";
     }
-    @PostMapping("register")
+    @PostMapping("register.html")
     public String registerPost(@ModelAttribute("user") User user , HttpServletRequest request) throws ServletException {
     String password=user.getPassword();
     user.setPassword(bCryptPasswordEncoder.encode(password));
