@@ -42,7 +42,7 @@ public class AccountController {
         roles.add(roleRepository.findById(2).get());
         user.setRoles(roles);
         userRepository.save(user);
-      //  request.login(user.getEmail(), password);// NOTE: If u want a user after register the system to allow to be login direct
+        request.login(user.getEmail(), password);// NOTE: If u want a user after register the system to allow to be login direct
         return "redirect:/home";
     }
 }
