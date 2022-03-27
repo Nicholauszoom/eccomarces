@@ -27,12 +27,12 @@ public class AccountController {
         RoleRepository roleRepository;
     @GetMapping("/register")
     public String registerGet(){
-        return "register";
+        return "register.html";
     }
     @GetMapping("/login")
     public String login(){
         GlobalData.cart.clear();
-        return "login";
+        return "login.html";
     }
     @PostMapping("/register")
     public String registerPost(@ModelAttribute("user") User user , HttpServletRequest request) throws ServletException {
@@ -43,6 +43,6 @@ public class AccountController {
         user.setRoles(roles);
         userRepository.save(user);
         request.login(user.getEmail(), password);// NOTE: If u want a user after register the system to allow to be login direct
-        return "login";
+        return "redirect:/";
     }
 }
