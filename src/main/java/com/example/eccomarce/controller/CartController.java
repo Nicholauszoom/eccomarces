@@ -13,29 +13,34 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class CartController {
     @Autowired
     ProductService productService;
+
     @GetMapping("/addToCart/{id}")
-    public  String addToCart(@PathVariable Long id){
+    public String addToCart(@PathVariable Long id) {
         GlobalData.cart.add(productService.getProductById(id).get());
-       return "redirect:/shop";
+        GlobalData.users.add(productService.getProductById(id).get());
+        return "redirect:/shop";
     }
 
     @GetMapping("/cart")
-    public String cartGet(Model model){
+    public String cartGet(Model model) {
         model.addAttribute("cart", GlobalData.cart);
         model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice));
         return "cart";
     }
+
     @GetMapping("/cart/removeItem/{index}")
-    public String removeCart(@PathVariable int index){
+    public String removeCart(@PathVariable int index) {
         GlobalData.cart.remove(index);
-     return "redirect:/cart";
+        return "redirect:/cart";
     }
+
     @GetMapping("/checkout")
-    public String goToCheckout(Model model){
+    public String goToCheckout(Model model) {
         model.addAttribute("cartCount", GlobalData.cart.size());
-     //   model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice));
+        //   model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice));
         model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice));
         return "checkout";
     }
 }
+

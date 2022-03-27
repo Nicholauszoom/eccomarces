@@ -18,11 +18,18 @@ public class HomeController {
     @Autowired
     ProductService productService;
 
-    @GetMapping({"/" ,"/home" })
+    @GetMapping({"/","/home" })
         public String home(Model model) {
         model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getAllProduct());
         return "index";
     }
+   /* @GetMapping("/home")
+    public String homePage(Model model){
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        return "home";
+    }*/
+
     @GetMapping("/shop")
     public String shop(Model model) {
         model.addAttribute("categories", categoryService.getAllCategory());

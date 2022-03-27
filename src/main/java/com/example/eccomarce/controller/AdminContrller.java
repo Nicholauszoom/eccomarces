@@ -1,6 +1,7 @@
 package com.example.eccomarce.controller;
 
 import com.example.eccomarce.dto.ProductDTO;
+import com.example.eccomarce.global.GlobalData;
 import com.example.eccomarce.model.Category;
 import com.example.eccomarce.model.Product;
 import com.example.eccomarce.service.CategoryService;
@@ -138,6 +139,7 @@ public class AdminContrller {
     @GetMapping("/admin/users")
     public String users(Model model){
         model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("cart", GlobalData.cart);
         return "users";
     }
 

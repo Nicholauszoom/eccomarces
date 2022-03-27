@@ -36,6 +36,7 @@
         </div>
     </div>
 </nav>
+
 <div class="container">
 
 <!--    <a th:href="@{/admin/categories/add}" style="margin: 20px 0" class="btn btn-primary">Add Category</a>-->
@@ -59,16 +60,91 @@
             <td th:text="${user.location}">Larry</td>
             <td th:text="${user.contact}">Larry</td>
 
+
             <td><a href="" th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
 
         </tr>
         </tbody>
     </table>
+
+    <!--<div class="row mb-4" th:each="item, iStat : ${cart}">
+        <div class="col-md-5 col-lg-3 col-xl-3">
+            <div class="mb-3 mb-md-0">
+                <h5 th:text="${item.name}">Blue denim shirt</h5>
+            </div>
+        </div>
+    </div>-->
+    <table class="table">
+        <thead class="thread-light">
+        <tr>
+            <!--<th scop="col">SN</th>-->
+            <th scop="col">Item</th>
+            <th scop="col">Price</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item, istat  : ${cart}">
+           <!-- <th scope="row" th:text="${iStat.index + 1}">1</th>-->
+            <th th:text="${item.name}">Larry</th>
+            <th th:number="${item.price}">Larry</th>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
 
+<!--
+<div class="container">
+
+    &lt;!&ndash;    <a th:href="@{/admin/categories/add}" style="margin: 20px 0" class="btn btn-primary">Add Category</a>&ndash;&gt;
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">SN</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Number of Items</th>
+            <th scope="col">Item Price</th>
+          &lt;!&ndash;  <th scope="col">Contact</th>&ndash;&gt;
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="item, iStat : ${cart}">
+            <th scope="row" th:text="${iStat.index + 1}">1</th>
+            <td th:text="${item.name}">Larry</td>
+            <td th:text="${cartCount}">Larry</td>
+            <td th:text="${item.price}">Larry</td>
+            <td > <a href="#!" th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"  type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                    class="fas fa-trash-alt mr-1"></i> Remove item </a></td>
+
+            <td><a href="" th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>-->
+
+<!--
+<div class="col-md-7 col-lg-9 col-xl-9">
+    <div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h5 th:text="${item.name}">Blue denim shirt</h5>
+                <p class="mb-3 text-uppercase small">Weight: <span th:text="${item.weight}"></span> grams</p>
+                &lt;!&ndash;                                                <p class="mb-2 text-uppercase small">Category: <span th:text="${item.category.name}"></span></p>&ndash;&gt;
+
+            </div>
+
+        </div>
+    </div>
+</div>
+-->
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
