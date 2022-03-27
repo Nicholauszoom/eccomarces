@@ -22,7 +22,7 @@ public class HomeController {
         public String home(Model model) {
         model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("products", productService.getAllProduct());
-        return "index";
+        return "index.html";
     }
    /* @GetMapping("/home")
     public String homePage(Model model){
