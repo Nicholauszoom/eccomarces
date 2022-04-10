@@ -24,7 +24,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name ="\"user\"")
+@Table(name ="detailuser")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
